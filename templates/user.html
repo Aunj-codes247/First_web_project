@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style3.css')}}">
+    <title>user</title>
+</head>
+<body>
+{%block content%}
+
+ {% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+ {% endwith %}
+    <nav>
+        <div class="uid_1">
+           
+            <li>Home</li>
+            <li>About us</li>
+            <li>Feedback</li> 
+            <li><a href="{{url_for('logout')}}">Log-Out</a></li>
+            <img src="{{url_for('static', filename='image.png')}}" alt="logo">
+
+            
+            
+
+
+
+
+
+
+        </div>
+
+
+    </nav>
+
+
+{%endblock%}
+</body>
+</html>
