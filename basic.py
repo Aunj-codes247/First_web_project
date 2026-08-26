@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
-from error import Validationerror, register_error_handlers
+from error import Validationerror, register_error_handlers, signinerror, def_new_error
 
 
 app = Flask(__name__)
 app.secret_key = "2332"
 register_error_handlers(app)
+def_new_error(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///user.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -121,17 +122,27 @@ def signin():
 
       name = request.form.get("user").strip()
       password = request.form.get("password").strip()
-
+      session["name"] = name
+      session["password"] = password
       user = User.query.filter_by(name = name).first()
 
       if user and user.password == password:
 
-       session["name"] = name
+       
 
        return redirect(url_for("user"))
 
-    
+      else:
 
+         if not password or not name :
+            raise signinerror(
+               name= name,
+               password= password
+            )         
+         if session["password"] != user.password:
+
+          return render_template("sign.html", password = password, message = "your password is wrong!")       
+      
 
       return render_template("sign.html", name=name, password = password)
 

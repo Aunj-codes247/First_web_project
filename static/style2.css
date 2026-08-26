@@ -7,3 +7,10 @@
     flex-direction: column;
 }
 
+.paragraph{
+    padding-left: 45%;
+    padding-bottom: 10%;
+    color: red;
+    font-family: "Playwrite DE LA Guides", cursive;
+    font-weight: 400;
+}
