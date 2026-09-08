@@ -84,9 +84,10 @@ nav {
     color: rgb(15, 14, 13);
 }
 .hero {
-  text-align: center;
-  padding: 80px 20px 40px;
+    text-align: center;
+    padding: 80px;
 }
+
 
 .hero h1 {
   font-family: 'Georgia', serif;
@@ -105,3 +106,5 @@ nav {
   letter-spacing: 0.5px;
   margin: 0;
 }
+
+
